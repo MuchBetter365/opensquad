@@ -12,4 +12,6 @@ tests/
 test-results/
 temp/squads/
 .claude/settings.local.json
-dashboards/test-results/
+dashboard/dist/
+dashboard/test-results/
+dashboard/tsconfig.tsbuildinfo

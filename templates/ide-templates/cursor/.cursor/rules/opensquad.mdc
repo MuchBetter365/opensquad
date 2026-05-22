@@ -11,6 +11,7 @@ This project uses **Opensquad**, a multi-agent orchestration framework.
 Type `/opensquad` to open the main menu, or use any of these commands:
 - `/opensquad create` — Create a new squad
 - `/opensquad run <name>` — Run a squad
+- `/opensquad dashboard` — Start the live Virtual Office dashboard
 - `/opensquad help` — See all commands
 
 ## Directory Structure
@@ -19,6 +20,7 @@ Type `/opensquad` to open the main menu, or use any of these commands:
 - `_opensquad/_memory/` — Persistent memory (company context, preferences)
 - `skills/` — Installed skills (integrations, scripts, prompts)
 - `squads/` — User-created squads
+- `dashboard/` — Live Virtual Office app that reads squad state from `squads/`
 - `squads/{name}/_investigations/` — Sherlock content investigations (profile analyses)
 - `squads/{name}/output/` — Generated content and files
 - `_opensquad/_browser_profile/` — Persistent browser sessions (login cookies, localStorage)

@@ -63,6 +63,7 @@ Parse user input and route to the appropriate action:
 | `/opensquad help` | Show help text |
 | `/opensquad create <description>` | Load Architect → Create Squad flow (will ask for reference profile URLs for Sherlock investigation) |
 | `/opensquad list` | List all squads in `squads/` directory |
+| `/opensquad dashboard [name]` | Start the live Virtual Office dashboard |
 | `/opensquad run <name>` | Load Pipeline Runner → Execute squad |
 | `/opensquad edit <name> <changes>` | Load Architect → Edit Squad flow |
 | `/opensquad skills` | Load Skills Engine → Show skills menu |
@@ -74,6 +75,15 @@ Parse user input and route to the appropriate action:
 | `/opensquad settings` | Show/edit preferences.md |
 | `/opensquad reset` | Confirm and reset all configuration |
 | Natural language about squads | Infer intent and route accordingly |
+
+## Dashboard Command
+
+When `/opensquad dashboard` is typed:
+
+1. Confirm that `dashboard/package.json` exists. If it is missing, tell the user to run `npx opensquad update`.
+2. Start the official live dashboard with `npx opensquad dashboard` from the project root.
+3. Tell the user the local URL printed by Vite, usually `http://127.0.0.1:5173/`.
+4. Explain that the dashboard reads the real `squads/` directory and `squads/{name}/state.json`; it does not create static agents or replace squad files.
 
 ## Help Text
 
@@ -91,6 +101,7 @@ GETTING STARTED
 SQUADS
   /opensquad create           Create a new squad (describe what you need)
   /opensquad list             List all your squads
+  /opensquad dashboard        Start the live Virtual Office dashboard
   /opensquad run <name>       Run a squad's pipeline
   /opensquad edit <name>      Modify an existing squad
   /opensquad delete <name>    Delete a squad

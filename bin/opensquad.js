@@ -6,10 +6,15 @@ import { update } from '../src/update.js';
 import { skillsCli } from '../src/skills-cli.js';
 import { agentsCli } from '../src/agents-cli.js';
 import { listRuns, printRuns } from '../src/runs.js';
+import { dashboard } from '../src/dashboard.js';
 
-const { positionals } = parseArgs({
+const { positionals, values } = parseArgs({
   allowPositionals: true,
   strict: false,
+  options: {
+    'install-only': { type: 'boolean' },
+    port: { type: 'string' },
+  },
 });
 
 const command = positionals[0];
@@ -50,6 +55,12 @@ if (command === 'init') {
   const squadName = positionals[1] || null;
   const runs = await listRuns(squadName, process.cwd());
   printRuns(runs);
+} else if (command === 'dashboard') {
+  const result = await dashboard(process.cwd(), {
+    installOnly: values['install-only'] === true,
+    port: values.port || null,
+  });
+  if (!result.success) process.exitCode = 1;
 } else {
   console.log(`
   opensquad — Multi-agent orchestration for Claude Code
@@ -66,6 +77,7 @@ if (command === 'init') {
     npx opensquad agents remove <name>    Remove an agent
     npx opensquad agents update           Update all agents
     npx opensquad runs [squad-name]     View execution history
+    npx opensquad dashboard               Start the live dashboard
 
   Learn more: https://github.com/renatoasse/opensquad
   `);

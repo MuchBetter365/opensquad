@@ -516,6 +516,9 @@ test('init does not copy dashboard node_modules or dist to user project', async 
   try {
     await init(tempDir, { _skipPrompts: true });
 
+    await stat(join(tempDir, 'dashboard', 'package.json'));
+    await stat(join(tempDir, 'dashboard', 'src', 'App.tsx'));
+
     await assert.rejects(
       stat(join(tempDir, 'dashboard', 'node_modules')),
       { code: 'ENOENT' }
@@ -524,6 +527,24 @@ test('init does not copy dashboard node_modules or dist to user project', async 
       stat(join(tempDir, 'dashboard', 'dist')),
       { code: 'ENOENT' }
     );
+    await assert.rejects(
+      stat(join(tempDir, 'dashboard', 'test-results')),
+      { code: 'ENOENT' }
+    );
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+});
+
+test('init with _ides codex includes dashboard command routing', async () => {
+  const tempDir = await mkdtemp(join(tmpdir(), 'opensquad-test-'));
+
+  try {
+    await init(tempDir, { _skipPrompts: true, _ides: ['codex'] });
+
+    const content = await readFile(join(tempDir, 'AGENTS.md'), 'utf-8');
+    assert.ok(content.includes('/opensquad dashboard'));
+    assert.ok(content.includes('state.json'));
   } finally {
     await rm(tempDir, { recursive: true, force: true });
   }
