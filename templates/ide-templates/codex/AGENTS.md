@@ -118,6 +118,12 @@ When running a squad:
 
 When used for Jean, enforce `C:\Users\jpmcb\.codex\memories\opensquad_custom_squad_rules.md` before creating, running or showing squads.
 
+- Treat Jean's custom squad rules as canonical defaults, not optional preferences.
+- Default hard limit: max 3 active visible agents.
+- Active agents must be high-level polyvariant/multi-stack operators able to own complete workstreams end to end.
+- Prefer a small team of senior polyvalent agents over many narrow agents, to protect Opensquad performance and coordination.
+- Performance is canonical: compact context, short structured handoffs, evidence pointers, no large dumps and no loops beyond 2 attempts.
+- Continuous learning is canonical: learn from Jean's past/current/future projects, record durable lessons, reuse canonical context and never repeat the same mistake twice.
 - No decorative, static, idle or "maybe useful" agents.
 - No separate Resource Controller, Resource Steward or Resource Governor agent by default.
 - Replace the old resource sub-agent with `embedded_resource_guardian`, a prompt/protocol inside each active session.
