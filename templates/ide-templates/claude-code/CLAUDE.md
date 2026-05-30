@@ -36,6 +36,17 @@ Type `/opensquad` to open the main menu, or use any of these commands:
 - Squad YAML files can be edited manually if needed, but prefer using `/opensquad edit`
 - Company context in `_opensquad/_memory/company.md` is loaded for every squad run
 
+## Jean Custom Squad Rules
+
+When used for Jean, enforce `C:\Users\jpmcb\.codex\memories\opensquad_custom_squad_rules.md` before creating, running or showing squads.
+
+- No decorative, static, idle or "maybe useful" agents.
+- No separate Resource Controller, Resource Steward or Resource Governor agent by default.
+- Replace the old resource sub-agent with `embedded_resource_guardian`, a prompt/protocol inside each active session.
+- Resource state is telemetry/status/panel data, not a permanent agent card.
+- Visible agents require real task/status/progress/evidence/output or blocker.
+- Follow fixed limited-RAM limits and Guardian Report.
+
 ## Browser Sessions
 
 Opensquad uses a persistent Playwright browser profile to keep you logged into social media platforms.

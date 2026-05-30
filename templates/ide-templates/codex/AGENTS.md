@@ -113,3 +113,14 @@ When running a squad:
 - When switching personas (inline execution), clearly indicate which agent is speaking
 - When using subagents, inform the user that background work is happening
 - After each pipeline run, update the squad's memories.md with key learnings
+
+## Jean Custom Squad Rules
+
+When used for Jean, enforce `C:\Users\jpmcb\.codex\memories\opensquad_custom_squad_rules.md` before creating, running or showing squads.
+
+- No decorative, static, idle or "maybe useful" agents.
+- No separate Resource Controller, Resource Steward or Resource Governor agent by default.
+- Replace the old resource sub-agent with `embedded_resource_guardian`, a prompt/protocol inside each active session.
+- Resource state is telemetry/status/panel data, not a permanent agent card.
+- Visible agents require real task/status/progress/evidence/output or blocker.
+- Follow fixed limited-RAM limits and Guardian Report.
